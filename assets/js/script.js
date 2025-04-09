@@ -157,3 +157,25 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+// generate message ke wa
+
+document.querySelector('[data-form]').addEventListener('submit', function(e) {
+  e.preventDefault(); // Biar gak reload
+
+  // Ambil nilai dari input
+  const name = document.querySelector('input[name="fullname"]').value;
+  const email = document.querySelector('input[name="email"]').value;
+  const message = document.querySelector('textarea[name="message"]').value;
+
+  // Nomor WhatsApp tujuan (tanpa tanda plus, pakai kode negara, contoh: 6281234567890)
+  // const phoneNumber = '6281234567890';
+  const phoneNumber = '6282123002895';
+
+  // Format pesan
+  const text = `Halo, saya ${name} (${email}).%0A%0A${message}`;
+
+  // Redirect ke WhatsApp
+  const waUrl = `https://wa.me/${phoneNumber}?text=${text}`;
+  window.open(waUrl, '_blank'); // buka di tab baru
+});
